@@ -43,6 +43,11 @@
             padding: 8px;
             text-align: center;
         }
+        #message {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -68,6 +73,7 @@
 
     <button id="downloadButton">CSVをダウンロード</button>
     <button id="copyButton">データをコピー</button> <!-- コピーボタンを追加 -->
+    <p id="message"></p> <!-- コピー結果メッセージ表示用 -->
 
     <script src="https://unpkg.com/@zxing/library@latest"></script>
     <script src="app.js"></script>
