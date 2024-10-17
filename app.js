@@ -74,8 +74,25 @@ function downloadCSV() {
     link.click();
 }
 
+// クリップボードにコピーする機能
+function copyToClipboard() {
+    // 出欠データをフォーマットする
+    const formattedData = attendanceData.map(e => `${e.time}, ${e.id}`).join("\n");
+
+    // クリップボードにコピー
+    navigator.clipboard.writeText(formattedData).then(() => {
+        resultElement.textContent = '結果がコピーされました！';
+    }).catch(err => {
+        console.error('コピーに失敗しました: ', err);
+        resultElement.textContent = 'コピーに失敗しました。';
+    });
+}
+
 // スキャン開始ボタンを押すと連続スキャンを開始
 document.getElementById('startButton').addEventListener('click', startScanning);
 
 // CSVダウンロードボタンを追加
 document.getElementById('downloadButton').addEventListener('click', downloadCSV);
+
+// コピー用ボタンにイベントリスナーを追加
+document.getElementById('copyButton').addEventListener('click', copyToClipboard);
