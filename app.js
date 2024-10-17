@@ -77,7 +77,7 @@ function downloadCSV() {
 // クリップボードにコピーする機能
 function copyToClipboard() {
     const formattedData = attendanceData.map(e => `${e.time}, ${e.id}`).join("\n");
-    
+
     // コピー処理を実行
     navigator.clipboard.writeText(formattedData)
         .then(() => {
