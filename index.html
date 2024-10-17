@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>出欠管理システム</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        video {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid black;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        table {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 400px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>出欠管理システム</h1>
+
+    <video id="video"></video>
+    <button id="startButton">バーコードスキャン開始</button>
+    <p id="result">ここにスキャン結果が表示されます</p>
+
+    <h2>出欠データ</h2>
+    <table id="attendanceTable">
+        <thead>
+            <tr>
+                <th>時刻</th>
+                <th>生徒証番号</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 出欠データがここに表示されます -->
+        </tbody>
+    </table>
+
+    <button id="downloadButton">CSVをダウンロード</button>
+
+    <script src="https://unpkg.com/@zxing/library@latest"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
