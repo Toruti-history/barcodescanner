@@ -46,7 +46,7 @@ async function startScanning() {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `<td>${currentFormattedTime}</td><td>${result.text}</td>`;
                 attendanceTableBody.appendChild(tr);
-                console.log("Scanning started");
+
                 startScanning();
             }
 
@@ -88,7 +88,6 @@ function copyToClipboard() {
             resultElement.textContent = 'コピーできませんでした。'; // 失敗メッセージ
         });
 }
-
 
 // スキャン開始ボタンを押すと連続スキャンを開始
 document.getElementById('startButton').addEventListener('click', startScanning);
