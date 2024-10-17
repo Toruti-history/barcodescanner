@@ -76,17 +76,19 @@ function downloadCSV() {
 
 // クリップボードにコピーする機能
 function copyToClipboard() {
-    // 出欠データをフォーマットする
     const formattedData = attendanceData.map(e => `${e.time}, ${e.id}`).join("\n");
-
-    // クリップボードにコピー
-    navigator.clipboard.writeText(formattedData).then(() => {
-        resultElement.textContent = '結果がコピーされました！';
-    }).catch(err => {
-        console.error('コピーに失敗しました: ', err);
-        resultElement.textContent = 'コピーに失敗しました。';
-    });
+    
+    // コピー処理を実行
+    navigator.clipboard.writeText(formattedData)
+        .then(() => {
+            resultElement.textContent = 'コピーしました！'; // 成功メッセージ
+        })
+        .catch(err => {
+            console.error('コピーに失敗しました: ', err);
+            resultElement.textContent = 'コピーできませんでした。'; // 失敗メッセージ
+        });
 }
+
 
 // スキャン開始ボタンを押すと連続スキャンを開始
 document.getElementById('startButton').addEventListener('click', startScanning);
