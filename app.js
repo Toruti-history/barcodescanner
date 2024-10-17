@@ -4,6 +4,7 @@ const codeReader = new ZXing.BrowserMultiFormatReader();
 const videoElement = document.getElementById('video');
 const resultElement = document.getElementById('result');
 const attendanceTableBody = document.querySelector('#attendanceTable tbody');
+const messageElement = document.getElementById('message');
 
 let attendanceData = [];
 localStorage.removeItem('attendanceData');
@@ -74,18 +75,17 @@ function downloadCSV() {
     link.click();
 }
 
-// クリップボードにコピーする機能
-function copyToClipboard() {
-    const formattedData = attendanceData.map(e => `${e.time}, ${e.id}`).join("\n");
+// コピー機能
+function copyData() {
+    const dataToCopy = attendanceData.map(e => `${e.time}, ${e.id}`).join("\n");
 
-    // コピー処理を実行
-    navigator.clipboard.writeText(formattedData)
+    navigator.clipboard.writeText(dataToCopy)
         .then(() => {
-            resultElement.textContent = 'コピーしました！'; // 成功メッセージ
+            messageElement.textContent = 'コピーしました！'; // 成功メッセージ
         })
         .catch(err => {
             console.error('コピーに失敗しました: ', err);
-            resultElement.textContent = 'コピーできませんでした。'; // 失敗メッセージ
+            messageElement.textContent = 'コピーできませんでした。'; // 失敗メッセージ
         });
 }
 
@@ -95,5 +95,5 @@ document.getElementById('startButton').addEventListener('click', startScanning);
 // CSVダウンロードボタンを追加
 document.getElementById('downloadButton').addEventListener('click', downloadCSV);
 
-// コピー用ボタンにイベントリスナーを追加
-document.getElementById('copyButton').addEventListener('click', copyToClipboard);
+// コピー機能を追加
+document.getElementById('copyButton').addEventListener('click', copyData);
